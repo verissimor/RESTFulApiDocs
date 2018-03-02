@@ -47,7 +47,9 @@ São as formas de retorno. Ex.:<br/>
 - Xml ```xml <?xml version="1"?><nome>João</nome>```
 
 ## Aula 6 - REST vs SOAP
-Rest é um modelo arquitetural; Enquanto SOAP é um protocolo.
-Rest requisições http simples; SOAP envolopado no HTTP para fazer RPC (Remote procedure call)
-Rest suporta vários formatos (xml, json, yaml, etc); Somente XML.
+ Rest | SOAP 
+ -----|------
+É um modelo arquitetural |  É um protocolo.
+Rest requisições http simples| SOAP envolopado no HTTP para fazer RPC (Remote procedure call)
+Rest suporta vários formatos (xml, json, yaml, etc)| Somente XML.
 
