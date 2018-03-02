@@ -33,3 +33,15 @@ Um código que é carregado somente quando uma página é acessada. A única con
 
 
 ## Aula 5 - Diferença entre REST e RESTful
+Rest é um conjunto de melhores práticas. RESTful é uma API que implementa os princípios rest. Caso uma api não implemente tais conceitos, ela torna-se apenas uma api http.
+
+*Representações* <br/>
+São as formas de retorno. Ex.:<br/>
+```javascript
+[cliente] => get {"/cliente/1"; "Accept: application/json"} => [servidor] => {"nome": "João da Silva"}
+[cliente] => get {"/cliente/1"; "Accept: image/jpeg"} => [servidor] => {imagem}
+```
+
+*Principais representações*<br/>
+- Json ```javascript {"nome": "João"}```
+- Xml ```xml <?xml version="1"?><nome>João</nome>```
