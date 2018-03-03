@@ -75,3 +75,34 @@ curl --help
 Na especificação original, http 1.0, eram apenas get, post e head. Na revisão 1.1, foi incluído options, put, delete, trace e connect. A rfc 5789, adiciou patch. 
 
 Get: quando existe a necessidade de obter dados de um recurso. Idepotente, ou seja, independente de quantas requisições, o resultado deve ser o mesmo. curl - X GET
+
+Post: usado para criar um recurso. curl - X POST
+
+Put: serve para fazer update em um recurso. 
+
+Delete: apaga um recurso
+
+## Aula 10 Outros Métodos http
+Head: retorna somente o cabeçalho
+
+Patch: atualiza de forma parcial um recurso. Exemplo, atualiza somente a idade de um usuário
+
+Options: saber quais métodos estão disponíveis para um recurso. Access-Control-Allow-Headers. 
+
+Connect: permite a criação de um túnel
+ 
+ #Aula 11 Safe methods 
+ Métodos que não alteram dados. Ex. Get e head 
+ 
+ É os métodos idempotentes não alteram nada após a segunda requisição. Ex. 10 requisições Get resultam de forma igual a apenas uma. São : Get, head, put, delete, options e trave. 
+ 
+ ##Aula 12 modelo de maturidade Richardson 
+ Muitas vezes precisamos de mais simplicidade ao invés de alcançar todos os níveis. 
+ 
+ Nível 0: Pox. As mensagens são em XML ou json. Mas não segue os padrões de uri proposto no rest. Ex: /salvarCliente. As respostas tbm não usam os códigos de start line. Ex. HTTP/1.1 200, {"status" : "erro"} 
+ 
+ Nível 1: recursos
+ 
+ Nível 2: verbos HTTP 
+ 
+ Nível 3: HATEOAS 
