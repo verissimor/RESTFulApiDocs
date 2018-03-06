@@ -124,5 +124,28 @@ https://developer.mozilla.org/pt-BR/docs/Web/HTTP/Status
 
 https://martinfowler.com/articles/richardsonMaturityModel.html
 
+https://spring.io/understanding/HATEOAS 
 
-Em resumo
+## AULA 15 ferramentas Postman e HTTPie
+
+O HTTPie é uma ferramenta de console, tem suporte a highlight e uma sintaxe mais simplificada. 
+
+Postman é a ferramenta mais conhecida. 
+
+## AULA 16 Media Types
+
+Define qual o formato de dados serão aceitos. Lembrando do exemplo:
+```javascript
+[cliente] => get {"/cliente/1"; "Accept: application/json"} => [servidor] => {"nome": "João da Silva"}
+[cliente] => get {"/cliente/1"; "Accept: image/jpeg"} => [servidor] => {imagem}
+```
+É composto por duas partes. A primeira retorna um nível mais alto, enquanto a segunda o formato específico. Exemplos:
+- application/json
+- applcation/xml
+- multipart/form-data
+- text/html
+- https://www.iana.org/assignments/media-types/media-types.xhtml
+
+Exemplos:
+- curl mockbin.org/request -H "Accept: application/json"
+- curl mockbin.org/request -H "Accept: application/json"
