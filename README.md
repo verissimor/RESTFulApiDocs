@@ -175,3 +175,52 @@ Outros cabeçalhos importantes:
 - 400 Bad Request: Quando um json mal formatado é enviado
 - **409 Conflict** Quando um registro já está cadastrado, ou, um e-mail já existente
 - **404 Not Found** Quando um GET para um registro que não existe
+- 304 Not Modified Quando usado um Etag e o recurso não foi alterado
+
+## Aula 19 Versionamento
+
+O Versionamento não faz parte das constraints rest, nem do modelo de maturidade de Richardson, mas fazem parte do universon REST. Formas de versionamento, sendo que atualmente a mais popular é por url.
+- url: example.com/v1/users
+- Subdomínio: api1.example.com.br/users
+- header: X-API-Version: 1
+- url com parametros: example.com/users?v1
+
+## Aula 20 Caching
+
+Http permite o cache do lado do cliente. Tendo isso em vista, o objtivo do cache é eliminar o máximo possíve o envio de requisições. 
+
+Para previnir requisições inteiras, para isso pode-se utilizar o "Header Cache-Control".
+- Cache-Control: max-age=3600 (em segundos, 1 hora)
+- Cache-Control: no-cache (será feito cache, mas deve chegar o servidor por uma etag) 
+- Cache-Control: no-store (não armazena)
+
+*Aula 22* <br />
+Etag: significa Entity Tag e destina-se a assegurar um token de validação, identificado uma versão específica.
+
+Exemplo:
+```
+curl http://exemple.com/users/joao
+HTTP/1.1 200 OK
+ETag: "12345"
+
+{"nome": "João"}
+```
+Na segunda requisição, que ainda não teve o recurso alterado, retorna 304 e não retorna message body:
+```
+curl http://exemple.com/users/joao -H 'If-None-Match: "12345"'
+
+HTTP/1.1 304 Not Modified
+ETag: "123456"
+```
+Em uma terceira requisição, em que foi alterado o recurso, retorna 200 e retorna msg body:
+```
+curl http://exemple.com/users/joao
+HTTP/1.1 200 OK
+ETag: "12345"
+
+{"nome": "João"}
+```
+https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/ETag
+https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/If-None-Match
+http://www.baeldung.com/etags-for-rest-with-spring
+
