@@ -157,7 +157,7 @@ Content-Type vs Accept: O primeiro define qual o conteúdo enviado pelo POST, en
 ## Gerindo erros
 
 *Aula 17* <br/>
-Retornará um status code específico para um determinado erro que ocorreu na aplicação. Acrescido de um retorno.
+Retornará um status code específico para um determinado erro que ocorreu na aplicação. Acrescido de um corpo de retorno contendo detalhes do erro, quando possível.
 
 ```
 HTTP 1.1 500 Internal Server Error
@@ -166,3 +166,12 @@ SyntaxError: Unexpected end of JSON input
 ```
 
 *Aula 18* <br/>
+Após criar um novo registro, deve-se retornar 201; Após deletar um registro, retornar 204. Após deletar um registro, e tentar consultar por GET, então deve-se retornar um 404 Not Found, ou, caso seja possível identificar que foi excluído, então retornar 410 Gone.
+
+Outros cabeçalhos importantes: 
+- 405 Method Not allowed. Quando um verbo não é suportado por um recurso (clientes, fornecedores, etc)
+- 406 Not Acceptable: Quando não existe uma representação (Accept), então retornar um erro 
+- 415 Unsupported Media Type: Quando a media type enviada (contúdo do post) não é suportado pelo servidor.
+- 400 Bad Request: Quando um json mal formatado é enviado
+- **409 Conflict** Quando um registro já está cadastrado, ou, um e-mail já existente
+- **404 Not Found** Quando um GET para um registro que não existe
