@@ -149,3 +149,20 @@ Define qual o formato de dados serão aceitos. Lembrando do exemplo:
 Exemplos:
 - curl mockbin.org/request -H "Accept: application/json"
 - curl mockbin.org/request -H "Accept: application/json"
+
+MIME type e Media Type é a mesma coisa. (A MIME type now properly called "media type" https://developer.mozilla.org/en-US/docs/Glossary/MIME_type).
+
+Content-Type vs Accept: O primeiro define qual o conteúdo enviado pelo POST, enquanto, o segundo é a instrução do que deve ser retornado.
+
+## Gerindo erros
+
+*Aula 17* <br/>
+Retornará um status code específico para um determinado erro que ocorreu na aplicação. Acrescido de um retorno.
+
+```
+HTTP 1.1 500 Internal Server Error
+
+SyntaxError: Unexpected end of JSON input
+```
+
+*Aula 18* <br/>
