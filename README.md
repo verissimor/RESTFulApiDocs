@@ -96,13 +96,33 @@ Connect: permite a criação de um túnel
  
  É os métodos idempotentes não alteram nada após a segunda requisição. Ex. 10 requisições Get resultam de forma igual a apenas uma. São : Get, head, put, delete, options e trave. 
  
- ##Aula 12 modelo de maturidade Richardson 
- Muitas vezes precisamos de mais simplicidade ao invés de alcançar todos os níveis. 
+ ## Modelo de maturidade Richardson 
+*Aula 12*
  
- Nível 0: Pox. As mensagens são em XML ou json. Mas não segue os padrões de uri proposto no rest. Ex: /salvarCliente. As respostas tbm não usam os códigos de start line. Ex. HTTP/1.1 200, {"status" : "erro"} 
+Muitas vezes precisamos de mais simplicidade ao invés de alcançar todos os níveis. 
  
- Nível 1: recursos
+Nível 0: Pox. As mensagens são em XML ou json. Mas não segue os padrões de uri proposto no rest. Ex: /salvarCliente. As respostas tbm não usam os códigos de start line. Ex. HTTP/1.1 200, {"status" : "erro"} 
+
+*Aula 13* <br />
+Nível 1: Recursos. Recursos (pessoas, clientes) são a base de modelar e organizar a API. No Nível "agora temos recursos". Utiliza verbos, mas, as respostas ainda não são com os status http corretos. Geralmente utiliza POST ou GET.
  
- Nível 2: verbos HTTP 
- 
- Nível 3: HATEOAS 
+Nível 2: verbos HTTP. Neste nível o http deixa de exercer um papel semântico na API e os verbos passam a ser utilizados com o propósito o qual foram criados. Nesse nível, por exemplo, ao enviar um POST com dados de cliente, o sistema retorna um header HTTP 1.1 201 Created. Também é adicionado um header location ex. "Location: /cliente/1".
+
+Status codes:
+https://developer.mozilla.org/pt-BR/docs/Web/HTTP/Status
+
+ Nível 3: HATEOAS. Significa "Hypermedia as the Engine of Application State". Segundo Roy Fielding, se não estiver nesse estado, não pode ser considerado RESTful. Na prática, um objeto retornado deve conter os links para outros possíveis estados. Ex.: 
+{
+  "id": "1", 
+  "nome": "João", 
+  "links" : [ 
+    {"rel": "self", "href": "/clientes/1"}, 
+    {"rel": "deletar", "href": "/clientes/1"}, 
+    {"rel": "notificar", "url": "/clientes/1/notificar"} 
+  ]
+}
+
+https://martinfowler.com/articles/richardsonMaturityModel.html
+
+
+Em resumo
