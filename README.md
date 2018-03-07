@@ -62,6 +62,8 @@ https://onlinecurl.com
 -I: ou -head. Traz somente o cabeçalho
 -X: ou -request específica qual será o verbo da requisição. Por padrão será get. Mas pode ser post, put, patch ou delete. 
 -v: verboso, vai retornar todos os detalhes da requisição 
+-u usuairo:senha faz uma autenticação basic
+- --digest -u jack:pass faz autenticação digest
 
 curl --help 
 
@@ -175,7 +177,8 @@ Outros cabeçalhos importantes:
 - 400 Bad Request: Quando um json mal formatado é enviado
 - **409 Conflict** Quando um registro já está cadastrado, ou, um e-mail já existente
 - **404 Not Found** Quando um GET para um registro que não existe
-- 304 Not Modified Quando usado um Etag e o recurso não foi alterado
+- 304 Not Modified: Quando usado um Etag e o recurso não foi alterado
+- 401 Unauthorized: Falha de autenticação (usuário/senha)
 
 ## Aula 19 Versionamento
 
@@ -224,3 +227,32 @@ https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/ETag
 https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/If-None-Match
 http://www.baeldung.com/etags-for-rest-with-spring
 
+## Aula 24 Autenticação 
+
+O padrão de autenticação HTTP é o basic por meio de digest. 
+
+*Aula 25* <br/>
+- Identificação: token que identifica um usuário, exemplo, api do google maps;
+- Autenticação: valida usuário/senha;
+- Autorização: verifica se quem autenticou-se possue (ou não) permissão de acesso.
+
+*Aula 26* <br/>
+Autenticação Basic: header: ```Authorization: Basic am9056fsdaxd``` (base64 para usuário e senha)
+
+## Aula 28 Autenticação baseada em Token
+Existe outra possibilidade que é API Key ou API secret token. Geralmente uma combinação enre email/senha.
+
+Após enviar login e senha o servidor devolve um token. Que será envado após cada requisição.
+
+header: ```Authorization: Token 6fc7f5db9eaaf7eab```
+
+Essa abordagem não é stateless. Além disso, conta com as seguintes desvantagens:
+- Será necessário replicar o sdados armazenados na medida em que se escala
+- Qanto tiver muitos clientse precisará gerir muitos tokens (ex.: 1mi de clientes)
+- Se cada cliente tiver mais de um token, isso, pode dobrar fácilmente. 
+
+## Aula 29 OAuth e JWT
+https://oauth.net
+
+https://jwt.io  RFC 7519
+header: ```Authorization: Bearer eyJoeXAiOiJKV1QiLcJhbb.....```
