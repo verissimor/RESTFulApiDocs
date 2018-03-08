@@ -56,22 +56,22 @@ Rest suporta vários formatos (xml, json, yaml, etc)| Somente XML.
 ## Aula 7 cURL
 https://onlinecurl.com
 
--H: atalho para Header. Exemplo: -H "Content-Type: application/json"
--d: atalho para data. Enviar dados para o servidor. Ex.: -d '{"name": "joao"}'
--i: ou -include. Faz o curl retornar tbm o cabeçalho da requisição 
--I: ou -head. Traz somente o cabeçalho
--X: ou -request específica qual será o verbo da requisição. Por padrão será get. Mas pode ser post, put, patch ou delete. 
--v: verboso, vai retornar todos os detalhes da requisição 
--u usuairo:senha faz uma autenticação basic
-- --digest -u jack:pass faz autenticação digest
+-H: atalho para Header. Exemplo: -H "Content-Type: application/json" <br />
+-d: atalho para data. Enviar dados para o servidor. Ex.: -d '{"name": "joao"}' <br />
+-i: ou -include. Faz o curl retornar tbm o cabeçalho da requisição  <br />
+-I: ou -head. Traz somente o cabeçalho <br />
+-X: ou -request específica qual será o verbo da requisição. Por padrão será get. Mas pode ser post, put, patch ou delete.  <br />
+-v: verboso, vai retornar todos os detalhes da requisição  <br />
+-u usuairo:senha faz uma autenticação basic <br />
+- --digest -u jack:pass faz autenticação digest <br />
 
 curl --help 
 
 ## aula 8 Resposta http 
-1 start-line:linha de início (obrigatória) 
-2 header fields: cabeçalhos de campos (0 ou mais) 
-3 empty line: linha em branco obrigatório 
-4 message body: corpo da mensagem opcional 
+1 start-line:linha de início (obrigatória)  <br />
+2 header fields: cabeçalhos de campos (0 ou mais)  <br />
+3 empty line: linha em branco obrigatório  <br />
+4 message body: corpo da mensagem opcional  <br />
 
 ## aula 9 Métodos http (verbos) 
 Na especificação original, http 1.0, eram apenas get, post e head. Na revisão 1.1, foi incluído options, put, delete, trace e connect. A rfc 5789, adiciou patch. 
